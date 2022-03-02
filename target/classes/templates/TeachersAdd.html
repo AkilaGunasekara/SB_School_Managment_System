@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/javascript" th:href="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .bg-img {
+            background: url("https://firebasestorage.googleapis.com/v0/b/fir-flutter-99d26.appspot.com/o/backg.png?alt=media&token=bc9d8268-5dd5-4513-9374-70d971c7c65f");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+        .formde{
+            margin: 2rem 30rem 2rem;
+        }
+
+    </style>
+</head>
+<body class="bg-img">
+<nav class="navbar font-weight-bold navbar-expand-lg navbar-light bg-light container">
+    <a class="navbar-brand container font-weight-bold" href="#" >Add Tachers for School</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+        <a class="h4 mr-3 btn btn-secondary btn-sm" th:href="@{'/'}">BACK</a>
+
+    </div>
+</nav>
+<br><br><br>
+
+<form th:action="@{addTeacher}" th:object="${newTeacher}" method="post" class="formde">
+
+    <h2>Add Teachers For School</h2>
+
+    <div>
+            <div class="form-group">
+                <label >Name</label>
+                <input type="text" class="form-control" th:field="*{Name}" required>
+            </div>
+
+            <div class="form-group">
+                <label >Age</label>
+                <input type="number" class="form-control" th:field="*{Age}" required>
+            </div>
+
+        <div class="form-group">
+            <label >Subject</label>
+            <select th:field="${newSubject.ID}">
+                <option th:each="Subject: ${Subjects}" th:value="${Subject.ID}" th:text="${Subject.SubName}"></option>
+            </select>
+
+
+        </div>
+
+            <div class="form-group">
+                <label >Address</label>
+                <input type="text" class="form-control" th:field="*{Address}" required>
+            </div>
+
+            <div class="form-group">
+                <label >TP</label>
+                <input type="number" class="form-control" th:field="*{TP}" required>
+            </div>
+
+            <div class="form-group">
+                <label >email</label>
+                <input type="text" class="form-control" th:field="*{email}" required>
+            </div>
+        <br><br>
+        <input class="btn btn-primary" type="submit" value="Add" />
+
+        <input class="btn btn-primary" type="reset" value="Reset" />
+
+    </div>
+
+
+
+
+</form>
+
+</body>
+</html>

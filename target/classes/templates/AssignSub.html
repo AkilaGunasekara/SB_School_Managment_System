@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/javascript" th:href="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <title>Document</title>
+
+    <style>
+        body {
+            height: 100vh;
+        }
+
+        * {
+            margin: 0;
+        }
+
+        .container-fluid {
+            padding-right: 0 !important;
+            padding-left: 0 !important;
+        }
+
+        .bg-img {
+            background: url("https://firebasestorage.googleapis.com/v0/b/fir-flutter-99d26.appspot.com/o/backg.png?alt=media&token=bc9d8268-5dd5-4513-9374-70d971c7c65f");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: "Adobe Caslon Pro";
+            font-size: 20px;
+        }
+        .centerss {
+            position: absolute;
+            left: 50%;
+            top: 40%;
+            transform: translate(-50%, -50%);
+            /*border: 5px solid #8ca7f1;*/
+            /*border-radius: 20px;*/
+            padding: 10px;
+        }
+
+    </style>
+
+<body class="bg-img">
+<h2>Assign Subject For Student</h2>
+<nav class="navbar font-weight-bold navbar-expand-lg navbar-light bg-light container">
+    <a class="navbar-brand container font-weight-bold" href="#" >Assign</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+        <a class="h4 mr-3 btn btn-secondary btn-sm" th:href="@{'/'}">BACK</a>
+
+    </div>
+</nav>
+
+<div class="centerss">
+<form th:action="@{AssignSubjectConform}" th:object = "${Studentpre}" method="post">
+
+      <label>Student</label>
+      <select th:field="*{ID}" >
+        <option th:each="Std: ${AllStudents}" th:value="${Std.ID}" th:text="${Std.Name}"></option>
+      </select>
+
+        Please provide a valid state.
+
+      <label>Subject</label>
+      <ul  th:each="Sub : ${AllSubjects}">
+        <li >
+          <input type="checkbox" th:field="*{subjects}" th:value="${Sub.ID}" th:text="${Sub.SubName}">
+        </li>
+      </ul>
+
+        Please provide a valid state.
+
+  <button type="submit" class="btn btn-primary">Assign</button>
+</form>
+</div>
+</body>
+</html>

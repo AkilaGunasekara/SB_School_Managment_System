@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/javascript" th:href="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .backg {
+            background-image: url('static/backg.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;}
+        .formde{
+            margin: 2rem 30rem 2rem;
+        }
+        h2{
+            text-align: center;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body class="backg">
+<br><br><br>
+<nav class="navbar font-weight-bold navbar-expand-lg navbar-light bg-light container">
+    <a class="navbar-brand container font-weight-bold" href="#" >Edit Teachers in School</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+        <a class="h4 mr-3 btn btn-secondary btn-sm" th:href="@{'/'}">BACK</a>
+
+    </div>
+</nav>
+<form th:action="@{UpdateTeacher}" th:object="${newTeacher}" method="post">
+
+    <h2>Add Teachers For School</h2>
+
+    <div class="formde">
+        <div class="form-group">
+            <label >Name</label>
+            <input type="text" class="form-control" th:field="*{Name}">
+        </div>
+
+        <div class="form-group">
+            <label >Age</label>
+            <input type="number" class="form-control" th:field="*{Age}">
+        </div>
+
+        <div class="form-group">
+            <label >Subject</label>
+            <select th:field="${newSubject.ID}">
+                <option th:each="Subject: ${Subjects}" th:value="${Subject.ID}" th:text="${Subject.SubName}"></option>
+            </select>
+
+
+        </div>
+
+        <div class="form-group">
+            <label >Address</label>
+            <input type="text" class="form-control" th:field="*{Address}">
+        </div>
+
+        <div class="form-group">
+            <label >TP</label>
+            <input type="number" class="form-control" th:field="*{TP}">
+        </div>
+
+        <div class="form-group">
+            <label >email</label>
+            <input type="text" class="form-control" th:field="*{email}">
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Edit" />
+
+        <input class="btn btn-primary" type="reset" value="Reset" />
+
+    </div>
+
+
+
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/javascript" th:href="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <title>Document</title>
+
+    <style>
+        body {
+            height: 100vh;
+        }
+
+        * {
+            margin: 0;
+        }
+
+        .bg-img {
+
+            background: url("https://firebasestorage.googleapis.com/v0/b/fir-flutter-99d26.appspot.com/o/backg.png?alt=media&token=bc9d8268-5dd5-4513-9374-70d971c7c65f");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .centerss {
+            border: 5px solid #8ca7f1;
+            border-radius: 20px;
+            padding: 10px;
+        }
+        .formde{
+            margin: 2rem 30rem 2rem;
+        }
+        h2{
+            text-align: center;
+            padding: 2rem;
+        }
+
+    </style>
+
+</head>
+
+<body class="bg-img">
+<nav class="navbar font-weight-bold navbar-expand-lg navbar-light bg-light container">
+    <a class="navbar-brand container font-weight-bold" href="#" >Add Students For School</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+        <a class="h4 mr-3 btn btn-secondary btn-sm" th:href="@{'/'}">BACK</a>
+
+    </div>
+</nav>
+
+
+
+<div th:if="${session.msg}">
+
+    <div class="alert alert-primary" role="alert" th:text="${session.msg}">
+    </div>
+<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+</div>
+
+<div class="formde">
+
+<form th:action="@{addStudent}" method="post">
+
+    <div class="form-group">
+        <label >Name</label>
+        <input type="text" class="form-control" th:field="${newStudent.Name}" required minlength="2">
+    </div>
+
+    <div class="form-group">
+        <label >Age</label>
+        <input type="number" class="form-control" th:field="${newStudent.Age}" required>
+    </div>
+
+    <div class="form-group">
+        <label >Grade</label>
+        <input type="text" class="form-control" th:field="${newStudent.Grade}" required>
+    </div>
+
+    <div class="form-group">
+        <label >Clz</label>
+        <input type="text" class="form-control" th:field="${newStudent.Clz}" required>
+    </div>
+
+    <div class="form-group">
+        <label >Address</label>
+        <input type="text" class="form-control" th:field="${newStudent.Address}" required minlength="5">
+    </div>
+
+    <div class="form-group">
+        <label >TP</label>
+        <input type="text" class="form-control" th:field="${newStudent.TP}"required minlength="10">
+    </div>
+
+    <div class="form-group">
+        <label >email</label>
+        <input type="text" class="form-control" th:field="${newStudent.email}" required>
+    </div>
+
+    <div class="form-group">
+        <label >MotherName</label>
+        <input type="text" class="form-control" th:field="${newParent.MotherName}" required>
+    </div>
+
+    <div class="form-group">
+        <label >FartherName</label>
+        <input type="text" class="form-control" th:field="${newParent.FartherName}" required>
+    </div>
+
+    <div class="form-group">
+        <label >Address</label>
+        <input type="text" class="form-control" th:field="${newParent.Address}" required minlength="5">
+    </div>
+
+    <div class="form-group">
+        <label >TP</label>
+        <input type="number" class="form-control" th:field="${newParent.TP}" required minlength="5">
+    </div>
+
+
+ <button type="submit" class="btn btn-primary">Add Student </button>
+
+    <a href="Teachers" class="btn btn-primary" >Reset</a>
+</form>
+</div>
+</body>
+</html>

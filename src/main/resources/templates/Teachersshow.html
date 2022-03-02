@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/javascript" th:href="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+
+  <title></title>
+  <style>
+    body {
+      height: 100vh;
+    }
+
+    * {
+      margin: 0;
+    }
+
+    .bg-img {
+      background: url("https://firebasestorage.googleapis.com/v0/b/fir-flutter-99d26.appspot.com/o/backg.png?alt=media&token=bc9d8268-5dd5-4513-9374-70d971c7c65f");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .centerss {
+
+      border: 5px solid #8ca7f1;
+      border-radius: 20px;
+      padding: 10px;
+    }
+    .formde{
+      margin: 2rem 30rem 2rem;
+    }
+
+  </style>
+</head>
+<body class="bg-img">
+<nav class="navbar font-weight-bold navbar-expand-lg navbar-light bg-light container">
+  <a class="navbar-brand container font-weight-bold" href="#" >Show Teachers in School</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+    <a class="h4 mr-3 btn btn-secondary btn-sm" th:href="@{'/'}">BACK</a>
+
+  </div>
+</nav>
+
+<br><br><br>
+<div class="container centerss">
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Address</th>
+      <th scope="col">Telephone</th>
+      <th scope="col">Email</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+
+
+    <tr th:each="model:${Teacher}">
+      <td th:text="${model.ID}"></td>
+      <td th:text="${model.Name}"></td>
+      <td th:text="${model.Age}"></td>
+      <td th:text="${model.Address}"></td>
+      <td th:text="${model.TP}"></td>
+      <td th:text="${model.email}"></td>
+      <td>
+        <a class="btn btn-sm btn-primary" th:href="@{'/Teachersshow/edit/' + ${model.ID}}">Edit</a>
+        <a class="btn btn-sm btn-danger">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
